@@ -1,11 +1,10 @@
-#!/usr/bin/env bash
 # SPDX-License-Identifier: GPL-3.0-only
 # MuseScore-Studio-CLA-applies
 #
 # MuseScore Studio
 # Music Composition & Notation
 #
-# Copyright (C) 2025 MuseScore Limited and others
+# Copyright (C) 2026 MuseScore Limited and others
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 3 as
@@ -19,12 +18,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-echo "Download dependencies"
-trap 'code=$?; echo "error: Download dependencies: command \`$BASH_COMMAND\` exited with code $code." >&2; exit 1' ERR
+include(MuseDeps)
 
-wget -q --show-progress -O musescore_deps_macos.tar.gz https://raw.githubusercontent.com/cbjeukendrup/musescore_deps/main/musescore_deps_macos.tar.gz
-mkdir -p $HOME/musescore_deps_macos
-tar xf musescore_deps_macos.tar.gz -C $HOME/musescore_deps_macos
-rm musescore_deps_macos.tar.gz
-
-echo "Download dependencies done"
+populate(ogg "ogg/1.3.5")
+populate(vorbis "vorbis/1.3.7")
+populate(flac "flac/1.4.2")
+populate(opus "opus/1.5.2")
+populate(libsndfile "libsndfile/1.0.31")
