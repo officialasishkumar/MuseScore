@@ -202,8 +202,7 @@ if (MUSE_MODULE_AUDIO_EXPORT)
     include(../cmake/SetupOpusEnc.cmake)
     target_link_libraries(muse_audio_engine PRIVATE ${LIBOPUSENC_TARGETS})
 
-    include(../cmake/SetupFlac.cmake)
-    target_link_libraries(muse_audio_engine PRIVATE ${FLAC_TARGETS})
+    target_link_libraries(muse_audio_engine PRIVATE FLAC::FLAC FLAC::FLAC++)
 
     add_subdirectory(../thirdparty/fdk-aac fdk_aac EXCLUDE_FROM_ALL)
     target_link_libraries(muse_audio_engine PRIVATE fdk_aac)
